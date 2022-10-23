@@ -5,12 +5,11 @@ function getComputerChoice() {
     if(randomNum == 0){
         return "rock";
     } else if(randomNum == 1){
-        return "paper"
+        return "paper";
     } else {
-        return "scissors"
+        return "scissors";
     }
 }
-// console.log(getComputerChoice());
 
 function playRound(playerSelection, computerSelection) {
     const playerSelectionLowerCase = playerSelection.toLowerCase();
@@ -40,7 +39,6 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
-// console.log(playRound("SCISSORS", "rock"));
 
 function game(){
     let winCount = 0;
@@ -62,4 +60,15 @@ function game(){
     else
         console.log("You lose the game...")
 }
-game();
+buttons = document.querySelectorAll('button');
+resultDisplay = document.querySelector('#result')
+console.log(resultDisplay);
+buttons.forEach((button) => {
+    console.log(button);
+    button.addEventListener('click', (e) => {
+        // console.log(e.target.attributes['data-shape'].value);
+        const result = playRound(getComputerChoice(), e.target.attributes['data-shape'].value)
+        console.log(result)
+        resultDisplay.textContent = result;
+    })
+})
